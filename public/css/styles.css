@@ -19,6 +19,27 @@ body {
     margin-bottom: 60px;
 }
 
+.inputForm{
+    background-color: #DACFCF;
+    position: absolute;
+    border: none;
+    width: 1300px;
+    height: 55px;
+    border-radius: 30px;
+    opacity: 0;
+    /* margin-left: 5px; */
+    left: 20px;
+    font-size: 20px;
+    font-family: 'Instrument Sans';
+    transition: all 1s;
+    display: none;
+}
+
+input:focus {
+    outline: none;
+    border: none;
+}
+
 .animatedButton{
     left:50%;
     background-color: #C2ADAD;
@@ -32,6 +53,7 @@ body {
     transition: all 1s;
     transform: all 1s;
     position: absolute;
+    display: inline-block;
 }
 
 .downloadButton{
@@ -51,6 +73,7 @@ body {
     top: 8px;
     left: 1490px;
     color: #333333;
+    display: none;
 }
 
 .dropDownButton{
@@ -73,6 +96,7 @@ body {
     color: #333333;
     font-size: 20px;
     opacity: 0;
+    display: none;
 }
 
 .resultBoard{
@@ -86,6 +110,7 @@ body {
     opacity: 0;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     transition: opacity 2s; 
+    display: none;
 }
 
 .youtubePreview{

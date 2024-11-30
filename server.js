@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-
+const youtubeRouter = require('./routes/youtube');
 const app = express();
 
 require('dotenv').config();
@@ -22,6 +22,8 @@ app.use('/public', express.static('public'));
 app.get('/', function(req, res) {
   res.render('layouts/main');
 });
+
+app.use('/youtube', youtubeRouter);
 
 app.listen(process.env.PORT, function() {
   console.log(`Server is running on port ${process.env.PORT}`);
