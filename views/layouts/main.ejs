@@ -26,12 +26,16 @@
     </div>
     
     <div id="resultBoard" class="resultBoard">
-      <video class="youtubePreview" controls>
-        <source src="movie.mp4" type="video/mp4">
-      </video>
+      <iframe id="youtubePreview" class="youtubePreview">
+      </iframe>
       
       <div class="descriptionBoard">
-        <p></p>
+        <h3 id="descriptionTitle" class="descriptionTitle"></h3>
+        <h3 id="description" class="description">Description: </h3>
+        <div class="descriptionContainer">
+          <p id="descriptionDetails" class="descriptionDetails">
+          </p>
+        </div>
       </div>
     </div>
     <script src="/public/js/main.js"></script>

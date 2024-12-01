@@ -114,7 +114,7 @@ input:focus {
 }
 
 .youtubePreview{
-    width: 484px;
+    width: 520px;
     height: 350px;
     border-radius: 30px;
     margin-left: 50px;
@@ -125,9 +125,45 @@ input:focus {
 .descriptionBoard{
     background-color: #D1AEAE;
     width: 959px;
-    height: 350px;
+    height: 500px;
     margin-top: 50px;
-    margin-left: 50px;
+    margin-left: 20px;
     border-radius: 30px;
     flex-shrink: 0;
+}
+
+.descriptionTitle{
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 30px;
+    width: 940px;
+    height: 70px;
+    opacity: 0;
+    transition: opacity 1s;
+    flex-shrink: 0;
+}
+
+.descriptionDetails{
+    border-radius: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+    font-family: 'Instrument Sans';
+    width: 940px;
+    height: 300px;
+    opacity: 0;
+    transition: opacity 1s;
+    flex-shrink: 0;
+    white-space: pre-wrap;
+    overflow-y:auto;
+}
+
+.description{
+    opacity: 0;
+    margin-left: 15px;
+    font-size: 25px;
+}
+
+&::-webkit-scrollbar {
+    width: 8px; 
 }
