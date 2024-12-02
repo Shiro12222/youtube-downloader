@@ -75,6 +75,7 @@ async function getInfo(){
 }
 
 async function handleDownload(){
+  console.log("handledownloading");
   try {
     const youtubeLink = document.getElementById("inputForm").value;
     const response = await fetch('/youtube/download', {
@@ -84,13 +85,27 @@ async function handleDownload(){
         },
         body: JSON.stringify({ url: youtubeLink })
     });
-    const download = await response.json();
+
+    if(response.ok){
+      console.log("response ok");
+
+      const download = await response.blob();
+      const youtubeuUrl = window.URL.createObjectURL(download);
+      const link = document.createElement("a");
+      link.href = youtubeuUrl;
+      link.download = "title.mp4";
+      document.body.appendChild(link);
+      link.click();
+
+      link.remove();
+      window.URL.revokeObjectURL(youtubeuUrl);
+    } else {
+      throw new Error("Download error");
+    }
   } catch (error) {
     console.log("Error:", error);
   }
 }
-
-
 
 window.addEventListener('resize', setPageScale);
 window.addEventListener('load', setPageScale);

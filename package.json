@@ -9,11 +9,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@distube/ytdl-core": "^4.15.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
-    "nodemon": "^3.1.7",
-    "ytdl-core": "^4.11.5"
+    "nodemon": "^3.1.7"
   }
 }

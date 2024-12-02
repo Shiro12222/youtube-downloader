@@ -2,7 +2,9 @@ const { clear } = require('console');
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
-const ytdl = require('ytdl-core');
+const path = require('path');
+const ytdl = require("@distube/ytdl-core");
+
 
 router.post('/download', async (req, res) => {
   console.log("can receive");
@@ -14,14 +16,29 @@ router.post('/download', async (req, res) => {
     } 
 
     const options = {
-      quality: "highestvideo", 
-      filter: "videoandaudio",
+      quality: "137", 
+      requestOptions: {
+        headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+        }
+      }
     };
-    // const youtubeInfo = await ytdl.getInfo(youtubeUrl);
-    // const downURL = ytdl(youtubeUrl, {format: 'mp4'}).pipe(res);
 
-    console.log(details);
-    res.status(200).send(details);
+    const youtubeInfo = await ytdl.getInfo(youtubeUrl);
+    const title = youtubeInfo.videoDetails.title.replace(/[^a-zA-Z0-9]/g, '').substring(0, 100);
+    if (title == ""){
+      title += "1";
+    }
+
+    res.setHeader('Content-Type', 'video/mp4');
+    res.setHeader('Content-Disposition', `attachment; filename="${title}.mp4"`);
+
+    ytdl(youtubeUrl, options)
+    .on('error', (err) => {
+      console.error('Error downloading video:', err);
+      res.status(500).json({ error: "Failed to download video." });
+    }).pipe(res);
+
   } catch (err){
     console.log("something error", err.message);
   }
